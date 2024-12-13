@@ -37,7 +37,7 @@
     "world-countries": "^4.0.0"
   },
   "engines": {
-    "node": "18.12.0"
+    "node": ">=18.12.0 <19"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
