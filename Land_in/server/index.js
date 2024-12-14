@@ -10,9 +10,20 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
+const allowedOrigins = ['https://land-in.vercel.app', 'https://land-in-pi.vercel.app'];
+
 app.use(express.json())
 app.use(cookieParser())
-app.use(cors({ origin: 'https://land-in.vercel.app', credentials: true }));
+app.use(cors({
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true); // Allow the request
+        } else {
+            callback(new Error('Not allowed by CORS')); // Block the request
+        }
+    },
+    credentials: true, // Allow cookies and credentials
+}));
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
