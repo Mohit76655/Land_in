@@ -31,16 +31,14 @@ export const createResidency = asyncHandler(async (req, res) => {
       },
     });
 
-    res.status(201).json({ message: "Residency created successfully", residency });
+    res.send({ message: "Residency created successfully", residency });
   } catch (err) {
-    // Check for unique constraint violation (duplicate residency address)
     if (err.code === "P2002") {
-      res.status(400).json({ message: "A residency with this address already exists." });
-    } else {
-      // Handle other types of errors
-      res.status(500).json({ message: "Error creating residency", error: err.message });
+      throw new Error("A residency with address already there");
     }
+    throw new Error(err.message);
   }
+  console.log(req.body);
 });
 
 // function to get all the documents/residencies
