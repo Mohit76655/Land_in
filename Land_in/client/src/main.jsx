@@ -11,8 +11,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       clientId="1aMs72WA2N64hOHIeU4xa74xEgxPSAVG"
       authorizationParams={{
         redirect_uri: "https://land-in-pi.vercel.app",
-        audience: "https://land-in.vercel.app",
       }}
+      audience="http://localhost:8000"
       scope="openid profile email"
     >
       <App />
