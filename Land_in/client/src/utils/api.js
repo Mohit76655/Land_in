@@ -177,6 +177,7 @@ export const createResidency = async (data, token) => {
         },
       }
     )
+    return res.data;
   } catch (error) {
     throw error
   }
