@@ -170,9 +170,7 @@ export const createResidency = async (data, token) => {
   try {
     const res = await api.post(
       `/residency/create`,
-      {
-        data
-      },
+      data,
       {
         headers: {
           Authorization: `Bearer ${token}`,
