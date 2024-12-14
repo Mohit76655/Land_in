@@ -170,16 +170,16 @@ export const createResidency = async (data, token) => {
   try {
     const res = await api.post(
       `/residency/create`,
-      {
-        data
-      },
+      data,  // Send data directly
       {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }
     )
+    return res.data;  // Return response data
   } catch (error) {
-    throw error
+    console.error('Error creating residency:', error.response || error);
+    throw new Error(error.response ? error.response.data : error.message);  // Provide error message to the caller
   }
 }
