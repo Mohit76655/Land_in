@@ -38,6 +38,7 @@ export const createResidency = asyncHandler(async (req, res) => {
     }
     throw new Error(err.message);
   }
+  console.log(req.body);
 });
 
 // function to get all the documents/residencies
